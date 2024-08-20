@@ -91,7 +91,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px; 
+  overflow: hidden; 
 }
 
 .car-image img {
@@ -99,6 +100,7 @@
   height: 350px;
   margin-top: 60px;
 }
+
 
 .car-selector {
 
@@ -140,10 +142,21 @@
   left: -250px; /* Initially hide the sidebar off-screen */
   width: 250px;
   height: 100%;
-  background-color: #333;
+  background-color: transparent;
   padding: 20px;
   transition: left 0.3s ease;
   z-index: 1000;
+}
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000e5;
+  backdrop-filter: blur(4px);
+  z-index: -1;
 }
 
 .sidebar.active {
@@ -159,7 +172,8 @@
 .sidebar ul li {
   margin: 20px 0;
 }
-.sidebar ul img{
+.sidebar  img{
+  margin-top: 70px;
   width: 150px;
   filter: invert(1);
 } 

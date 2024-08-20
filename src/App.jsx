@@ -11,6 +11,8 @@ import './App.css';
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
+  
+
   const carModels = [
     { name: '911', img: pic },
     { name: 'Panamera', img: pan },
@@ -46,8 +48,9 @@ function App() {
         <button className="close-btn" onClick={toggleSidebar}>
           <i className="fa-solid fa-times"></i>
         </button>
+        <img src={logo} alt="Porsche Logo" />
         <ul>
-          <img src={logo} alt="Porsche Logo" />
+          
           <li><a href="#home">Home</a></li>
           <li><a href="#shop">Shop</a></li>
           <li><a href="#about">About</a></li>
@@ -58,19 +61,43 @@ function App() {
 
       <div className="content-container">
         <div className="car-details">
-          <h2>911 GT2 RS</h2>
+          <motion.h2 
+          initial={{ opacity: 0, y:40 }}
+          animate={{ opacity: 1, y:0 }}
+          transition={{ duration: 1 }}
+          >911 GT2 RS</motion.h2>
           <ul>
-            <li><strong>700 hp/515 kW</strong><span>Power (hp)/Max kW</span></li>
-            <li><strong>2.8 Sec</strong><span>Acceleration 0-100 km/h</span></li>
-            <li><strong>Rear</strong><span>Drive</span></li>
-          </ul>
+  {[
+    { label: "700 hp/515 kW", detail: "Power (hp)/Max kW" },
+    { label: "2.8 Sec", detail: "Acceleration 0-100 km/h" },
+    { label: "Rear", detail: "Drive" },
+  ].map((spec, index) => (
+    <motion.li
+      key={index}
+      custom={index}
+      
+      initial={{ opacity: 0, y: 40 }}
+      animate={(index) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: index * 0.2,
+          duration: 0.8,
+          ease: "easeOut",
+        },
+      })}
+    >
+      <strong>{spec.label}</strong><span>{spec.detail}</span>
+    </motion.li>
+  ))}
+</ul>
           <a href="">Test Drive</a>
           <div className="car-selector">
             {carModels.map((car, index) => (
               <motion.div
                 key={index}
                 className="car-model"
-                whileHover={{ scale: 1.5, y: -20 }}
+                whileHover={{ scale: 1.1, y: -20 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <img src={car.img} alt={car.name} />
@@ -83,8 +110,8 @@ function App() {
           <motion.img
             src={log}
             alt="Porsche 911 GT2 RS"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x:1000, y:-150 }}
+            animate={{ opacity: 1, x:0, y:0 }}
             transition={{ duration: 0.8 }}
           />
         </div>
