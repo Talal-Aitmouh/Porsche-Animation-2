@@ -97,8 +97,11 @@ function App() {
               <motion.div
                 key={index}
                 className="car-model"
+                initial={{ opacity: 0, y: 50}}
+                animate={{ opacity: 1, y: 0 }}
+              
                 whileHover={{ scale: 1.1, y: -20 }}
-                transition={{ type: 'spring', stiffness: 300 }}
+                transition={{ duration:0.8, type: 'spring', stiffness: 300 }}
               >
                 <img src={car.img} alt={car.name} />
                 <p>{car.name}</p>
@@ -112,7 +115,7 @@ function App() {
             alt="Porsche 911 GT2 RS"
             initial={{ opacity: 0, x:1000, y:-150 }}
             animate={{ opacity: 1, x:0, y:0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
           />
         </div>
       </div>
