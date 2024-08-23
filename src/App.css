@@ -81,6 +81,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: .5s ease;
 }
 .car-details a:hover{
   color: #000;
@@ -140,7 +141,7 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; /* Initially hide the sidebar off-screen */
+  left: -250px; 
   width: 250px;
   height: 100%;
   background-color: transparent;
@@ -161,7 +162,7 @@
 }
 
 .sidebar.active {
-  left: 0; /* Slide in the sidebar */
+  left: 0; 
 }
 
 .sidebar ul {
@@ -189,7 +190,7 @@
   color: #ccc;
 }
 
-/* Close Button Styling */
+
 .close-btn {
   position: absolute;
   top: 10px;
